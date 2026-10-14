@@ -102,7 +102,7 @@ update_and_install_feeds() {
 reset_feed_worktrees() {
   local feed
 
-  [[ -d "${SRC_DIR_ABS}/feeds" ]] || return
+  [[ -d "${SRC_DIR_ABS}/feeds" ]] || return 0
 
   while IFS= read -r feed; do
     log "Resetting feed worktree $(basename "${feed}")"
