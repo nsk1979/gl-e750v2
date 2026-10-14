@@ -95,8 +95,13 @@ update_and_install_feeds() {
 
   reset_feed_worktrees
 
-  log "Installing feeds"
-  (cd "${SRC_DIR_ABS}" && ./scripts/feeds install -a)
+  log "Installing required feeds"
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p packages curl)
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p packages lpac)
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p packages modemmanager)
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p packages modemmanager-rpcd)
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p luci luci-base)
+  (cd "$SRC_DIR_ABS" && ./scripts/feeds install -p luci luci-proto-modemmanager)
 }
 
 reset_feed_worktrees() {
